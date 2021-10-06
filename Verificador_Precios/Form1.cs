@@ -7,7 +7,10 @@ namespace Verificador_Precios
 {
     public partial class Form1 : Form
     {
-        private int segundos = 0;
+        
+
+
+        private static MySqlDataReader resultado;
 
         private String codigo = "";
         public Form1()
@@ -22,45 +25,40 @@ namespace Verificador_Precios
             pictureBox2.Location = new Point(this.Width/2 - pictureBox2.Width/2,this.Height/2);
         }
 
-
-        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        public void metodo(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
             {
                 //MessageBox.Show("vamos a buscar el producto "+codigo);
                 try
                 {
+
                     MySqlConnection servidor;
-                    servidor = new MySqlConnection("server = 127.0.0.1; user = root; database = dbvp; SSL Mode = None; ");
+                    servidor = new MySqlConnection("server = 127.0.0.1; user = root; database = verificador_productos; SSL Mode = None; ");
                     servidor.Open();
-                    string query = "SELECT producto_nombre, producto_precio, producto_stock, producto_imagen FROM productos WHERE producto_codigo =" + codigo + ";";
+                    string query = "SELECT producto_nombre, producto_precio, producto_cantidad, producto_imagen FROM productos WHERE producto_codigo =" + codigo + ";";
                     //MessageBox.Show(query);
                     MySqlCommand consulta;
                     consulta = new MySqlCommand(query, servidor);
-                    MySqlDataReader resultado = consulta.ExecuteReader();
+                    resultado = consulta.ExecuteReader();
                     if (resultado.HasRows)
                     {
                         resultado.Read();
-                        //MessageBox.Show(resultado.GetString(1));
-                        label2.Visible = true;
-                        pictureBox2.Visible=false;
-                        pictureBox3.Visible = true;
-                        label2.Text = resultado.GetString(0)+Environment.NewLine+"Precio:"+resultado.GetString(1) +
-                            Environment.NewLine + "Stock:" + resultado.GetString(2);
-                        pictureBox3.ImageLocation = resultado.GetString(3);
-                        pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
+                        Form3 prod = new Form3(resultado);
+                        this.Hide();
+                        prod.Show();
 
-                        segundos = 0;
-                        timer1.Enabled = true;
                     }
                     else
                     {
-                        MessageBox.Show("Llame al supervisor, el producto no fue encontrado");
+                        Form2 Error = new Form2();
+                        this.Hide();
+                        Error.Show();
                     }
                 }
                 catch (Exception x)
                 {
-                    MessageBox.Show(x.ToString(), "Titulo", MessageBoxButtons.OK, MessageBoxIcon.Error); 
+                    MessageBox.Show(x.ToString(), "Titulo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 codigo = "";
             }
@@ -69,18 +67,12 @@ namespace Verificador_Precios
                 codigo += e.KeyChar;
             }
         }
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            metodo(sender, e);
+        }
 
-		private void timer1_Tick(object sender, EventArgs e)
-		{
-            segundos++;
 
-            if (segundos == 4)
-            {
-                timer1.Enabled = false;
-                pictureBox2.Visible = true;
-                pictureBox3.Visible = false;
-                label2.Text = "";
-            }
-		}
-	}
-}
+
+    }
+    }
