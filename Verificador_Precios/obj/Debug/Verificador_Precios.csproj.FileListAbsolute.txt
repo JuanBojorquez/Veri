@@ -193,7 +193,6 @@ C:\Users\JUANN\OneDrive\Escritorio\Verificador_Precios\Verificador_Precios\obj\D
 C:\Users\JUANN\OneDrive\Escritorio\Verificador_Precios\Verificador_Precios\obj\Debug\Verificador_Precios.Properties.Resources.resources
 C:\Users\JUANN\OneDrive\Escritorio\Verificador_Precios\Verificador_Precios\obj\Debug\Verificador_Precios.csproj.GenerateResource.cache
 C:\Users\JUANN\OneDrive\Escritorio\Verificador_Precios\Verificador_Precios\obj\Debug\Verificador_Precios.csproj.CoreCompileInputs.cache
-C:\Users\JUANN\OneDrive\Escritorio\Verificador_Precios\Verificador_Precios\obj\Debug\Verificador_Precios.csproj.CopyComplete
 C:\Users\JUANN\OneDrive\Escritorio\Verificador_Precios\Verificador_Precios\obj\Debug\Verificador_Precios.exe
 C:\Users\JUANN\OneDrive\Escritorio\Verificador_Precios\Verificador_Precios\obj\Debug\Verificador_Precios.pdb
 C:\Users\JUANN\OneDrive\Escritorio\Verificador_Precios\Verificador_Precios\obj\Debug\Verificador_Precios.Form2.resources

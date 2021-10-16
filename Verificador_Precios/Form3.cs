@@ -32,9 +32,9 @@ namespace Verificador_Precios
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            label1.Location = new Point(this.Width / 4 - 50, this.Height/2 + 25);
+            label1.Location = new Point(this.Width / 4 - 50, this.Height/2 + 45);
             label2.Location = new Point(this.Width / 4 - 50, this.Height/2);
-            label3.Location = new Point(this.Width / 4 - 50, this.Height/2 - 25);
+            label3.Location = new Point(this.Width / 4 - 50, this.Height/2 - 45);
             pictureBox2.Location = new Point(this.Width/2 - pictureBox2.Width/2 - 25, this.Height - pictureBox2.Height - 100);
 
             
